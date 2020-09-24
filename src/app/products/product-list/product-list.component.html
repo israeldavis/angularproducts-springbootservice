@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bg-dark text-primary mt-2">
+          <h4>Lista de Productos</h4>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-hover" *ngIf="productos?.length > 0">
+            <thead class="bg-dark text-primary text-center">
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Código</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Calificación</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of productos">
+                <td scope="col">{{producto.id}}</td>
+                <td scope="col">
+                  <b><a [routerLink]="['/products', producto?.id]">{{producto?.productName}}</a></b>
+                </td>
+                <td scope="col">{{producto?.productCode}}</td>
+                <td scope="col" class="text-right">{{producto?.price | currency}}</td>
+                <td scope="col" class="text-right">{{producto?.starRating}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert alert-warning" role="alert" *ngIf="productos?.length == 0">
+            La lista de productos está vacia
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
