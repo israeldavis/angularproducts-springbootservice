@@ -15,12 +15,17 @@ export class ProductosService {
 
   getProducts(): Observable<Product[]>{
     return this.http.get<Product[]>(this.urlApi).pipe(
-      tap( result => console.log('Result: ' + result))
+      tap( result => console.log('Result: ' + JSON.stringify(result)))
     )
   }
 
   getProduct(id: number): Observable<Product> {
     const url = this.urlApi + `/${id}`;
     return this.http.get<Product>(url);
+  }
+
+  updateProduct(product: Product): Observable<Product> {
+    const url = `${this.urlApi}/${product.id}`
+    return this.http.put<Product>(url, product);
   }
 }

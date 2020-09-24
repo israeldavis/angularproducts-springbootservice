@@ -13,6 +13,7 @@
               <th scope="col">Código</th>
               <th scope="col">Precio</th>
               <th scope="col">Calificación</th>
+              <th scope="col"></th>
             </thead>
             <tbody>
               <tr *ngFor="let producto of productos">
@@ -23,6 +24,11 @@
                 <td scope="col">{{producto?.productCode}}</td>
                 <td scope="col" class="text-right">{{producto?.price | currency}}</td>
                 <td scope="col" class="text-right">{{producto?.starRating}}</td>
+                <td scope="col" >
+                  <a [routerLink]="['/products', 'edit', producto?.id]" class="btn btn-primary">
+                    Editar
+                  </a>
+                </td>
               </tr>
             </tbody>
           </table>
