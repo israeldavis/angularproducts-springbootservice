@@ -49,6 +49,13 @@ export class ProductEditComponent implements OnInit {
     }
   }
 
-
+  deleteProduct(id: number, formulario: NgForm) {
+    this.productosService.deleteProduct(id).subscribe(
+      () => {
+        formulario.reset();
+        this.router.navigate(['/productos']);
+      }
+    )
+  }
 
 }

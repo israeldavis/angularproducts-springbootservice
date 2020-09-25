@@ -24,7 +24,7 @@
                 <td scope="col">{{producto?.productCode}}</td>
                 <td scope="col" class="text-right">{{producto?.price | currency}}</td>
                 <td scope="col" class="text-right">{{producto?.starRating}}</td>
-                <td scope="col" >
+                <td scope="col" class="text-center">
                   <a [routerLink]="['/products', 'edit', producto?.id]" class="btn btn-primary">
                     Editar
                   </a>

@@ -10,54 +10,78 @@
           <input hidden id="id" name="id" />
           <div class="form-group row">
             <label for="productName" class="col-md-2 col-form-label text-right">Nombre</label>
-            <div class="col-md-8">
+            <div class="col-md-9">
               <input type="text" class="form-control" id="productName" placeholder="" [(ngModel)]="producto.productName" name="productName" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="productCode" class="col-md-2 col-form-label text-right">Código</label>
-            <div class="col-md-8">
+            <div class="col-md-9">
               <input type="text" class="form-control" id="productCode" placeholder="Código" [(ngModel)]="producto.productCode" name="productCode" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="price" class="col-md-2 col-form-label text-right">Precio</label>
-            <div class="col-md-8">
+            <div class="col-md-9">
               <input type="number" class="form-control" id="price" placeholder="Precio" [(ngModel)]="producto.price" name="price" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="description" class="col-md-2 col-form-label text-right">Descripción</label>
-            <div class="col-md-8">
+            <div class="col-md-9">
               <textarea class="form-control" id="description" rows=3 [(ngModel)]="producto.description" name="description"></textarea>
             </div>
           </div>
           <div class="form-group row">
             <label for="starRating" class="col-md-2 col-form-label text-right">Calificación</label>
-            <div class="col-md-8">
+            <div class="col-md-9">
               <input type="number" class="form-control" id="starRating" placeholder="starRating" [(ngModel)]="producto.starRating" name="starRating" step="any">
             </div>
           </div>
           <div class="form-group row">
             <label for="imageUrl" class="col-md-2 col-form-label text-right">Url de la imagen</label>
-            <div class="col-md-8">
+            <div class="col-md-9">
               <input type="url" class="form-control" id="imageUrl" placeholder="http://www.someurl.com/imagen" [(ngModel)]="producto.imageUrl" name="imageUrl">
             </div>
           </div>
 
           <div class="form-group row " >
-            <div class="col-md-4 offset-md-2">
+            <div class="col-md-3 offset-md-2">
               <a class="btn btn-dark btn-block" [routerLink]="['/products']" ><i class="fa fa-angle-double-left"></i>&nbsp;&nbsp; Regresar</a>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-check"></i>&nbsp;&nbsp; Guardar</button>
+            </div>
+            <div class="col-md-3 text-white">
+              <a class="btn btn-danger btn-block" data-toggle="modal"  data-target="#exampleModal" ><i class="fa fa-trash"></i>&nbsp;&nbsp; Borrar</a>
             </div>
           </div>
         </fieldset>
 
+        <!-- Modal -->
+        <div th:fragment="modalConfirmation">
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header  bg-dark text-primary">
+                          <h5 class="modal-title" id="exampleModalLabel">Confirma Eliminar</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          <b>¿Confirma que quiere eliminar el producto {{producto?.productName}}?</b>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <a type="button" class="btn btn-danger"  data-dismiss="modal" (click)="deleteProduct(producto.id, formulario)">Eliminar</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
       </form>
-
-
     </div>
   </div>
 </div>
+
