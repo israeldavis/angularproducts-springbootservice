@@ -37,6 +37,12 @@ export class ProductEditComponent implements OnInit {
       if(formulario.dirty) {
         if(this.producto.id == 0) {
           //crear nuevo
+          this.productosService.createProduct(this.producto).subscribe(
+            () => {
+              formulario.reset();
+              this.router.navigate(['/productos']);
+            }
+          )
         } else {
           this.productosService.updateProduct(this.producto).subscribe(
             () => {
